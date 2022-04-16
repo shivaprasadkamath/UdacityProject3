@@ -13,7 +13,7 @@ jobs:
       - run: echo world
 workflows:
   # Name the workflow "welcome"
-  welcome:
+  Shivs:
     # Run the welcome/run job in its own container
     jobs:
       - print_hello
