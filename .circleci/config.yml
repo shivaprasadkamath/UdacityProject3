@@ -44,6 +44,27 @@ jobs:
           name: on error
           command: echo "Hello Error!"
           when: on_fail
+  
+  npmbuild:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run lint
+  npmtest:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run test
+  npmanalyze:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm audit
             
 
 workflows:
@@ -57,3 +78,10 @@ workflows:
             - print_hello
       - build
       - failed job
+      - npnbuild
+      - npmtest:
+          requires:
+            - npmbuild
+      - npmanalyze:
+          requires:
+            - npmtest
