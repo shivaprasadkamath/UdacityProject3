@@ -30,7 +30,7 @@ jobs:
             echo "<< pipeline.number >>"
             echo "my git branch is << pipeline.git.branch >>"
       - print_pipeline_id:
-          id: << pipeline.id >>
+            id: << pipeline.id >>
             
 
 workflows:
