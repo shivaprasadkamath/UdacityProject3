@@ -19,7 +19,8 @@ jobs:
       - run:
           name: "echo an env var that is part of our project"
           command: |
-            echo $pipeline.number
+            echo "<< pipeline.number >>"
+            echo "my git branch is << pipeline.git.branch >>"
 workflows:
   # Name the workflow "welcome"
   Shivs:
