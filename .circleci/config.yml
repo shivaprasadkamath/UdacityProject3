@@ -78,7 +78,7 @@ workflows:
             - print_hello
       - build
       - failed job
-      - npnbuild
+      - npmbuild
       - npmtest:
           requires:
             - npmbuild
