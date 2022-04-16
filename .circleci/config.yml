@@ -2,11 +2,11 @@ version: 2.1
 
 commands:
   print_pipeline_id:
-    pipe:
+    parameters:
       id:
         type: string
     steps:
-      - run: echo <<pipe.id>>
+      - run: echo <<parameters.id>>
 
 jobs:
   print_hello:
