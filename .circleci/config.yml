@@ -2,8 +2,11 @@ version: 2.1
 
 commands:
   print_pipeline_id:
+    pipe:
+      id:
+        type: string
     steps:
-      - run: echo ${CIRCLE_WORKFLOW_ID}
+      - run: echo <<pipe.id>>
 
 jobs:
   print_hello:
@@ -26,7 +29,8 @@ jobs:
           command: |
             echo "<< pipeline.number >>"
             echo "my git branch is << pipeline.git.branch >>"
-      - print_pipeline_id
+      - print_pipeline_id:
+          id: << pipeline.id >>
             
 
 workflows:
