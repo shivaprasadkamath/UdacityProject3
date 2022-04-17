@@ -1,0 +1,87 @@
+version: 2.1
+
+commands:
+  print_pipeline_id:
+    parameters:
+      id:
+        type: string
+    steps:
+      - run: echo <<parameters.id>>
+
+jobs:
+
+  print_hello:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo hello
+
+  print_world:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo world
+
+  build:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: "echo an env var that is part of our project"
+          command: |
+            echo "<< pipeline.number >>"
+            echo "my git branch is << pipeline.git.branch >>"
+      - print_pipeline_id:
+            id: << pipeline.id >>
+
+  failed job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: exit 1
+      - run:
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
+  
+  npmbuild:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run lint
+  npmtest:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run test
+  npmanalyze:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm audit
+            
+
+workflows:
+  # Name the workflow "welcome"
+  Shivs:
+    # Run the welcome/run job in its own container
+    jobs:
+      - print_hello
+      - print_world:
+          requires:
+            - print_hello
+      - build
+      - failed job
+      - npmbuild
+      - npmtest:
+          requires:
+            - npmbuild
+      - npmanalyze:
+          requires:
+            - npmtest
