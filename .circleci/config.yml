@@ -242,7 +242,8 @@ jobs:
             echo $TYPEORM_DATABASE
             npm install
             npm run build
-            touch migrationresult.txt           
+            touch migrationresult.txt   
+            npm run migrations:revert        
             npm run migrations >> migrationresult.txt
             cat migrationresult.txt          
       - run:
