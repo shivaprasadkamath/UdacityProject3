@@ -247,7 +247,7 @@ jobs:
             npm run migrations >> migrationresult.txt
             cat migrationresult.txt          
       - run:
-          name: Send migration results to KVDB
+          name: Send migration results to KVDBS
           command: |
             #!/bin/bash
             cd backend
