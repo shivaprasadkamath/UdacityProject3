@@ -409,6 +409,11 @@ jobs:
             else
               return 1
             fi
+            
+      - revert-migrations
+      - destroy-environment      
+
+
 workflows:
   default:
     jobs:
