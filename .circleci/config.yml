@@ -412,7 +412,7 @@ jobs:
             else
               return 1
             fi
-            
+
       - revert-migrations
       - destroy-environment      
 
@@ -436,7 +436,8 @@ jobs:
             OldWorkflowID=$(aws cloudformation \
                           list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
                           --no-paginate --output text | tr -d '\n')
-            curl -k https://kvdb.io/GXAunYKujNio4YAztCUxZL/OldWorkflowID_${CIRCLE_WORKFLOW_ID:0:7} -d '$OldWorkflowID'
+            echo $OldWorkflowID
+            curl -k https://kvdb.io/GXAunYKujNio4YAztCUxZL/OldWorkflowID_${CIRCLE_WORKFLOW_ID:0:7} -d "${OldWorkflowID}"
       - run:
           name: Update cloudfront distribution
           working_directory: ./.circleci/files
@@ -444,7 +445,7 @@ jobs:
             echo "Update CloudFront"
             aws cloudformation deploy \
               --template-file cloudfront.yml \
-              --stack-name udapeople-prod \
+              --stack-name InitialStack \
               --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}" \
               --tags project=udapeople	  
       - revert-migrations
