@@ -401,7 +401,7 @@ jobs:
                 return 1
             fi
       - run:
-          name: Frontend smoke test.
+          name: Frontend smoke test
           command: |
             # your code here
             URL="https://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-west-2.amazonaws.com/index.html#/employees"             
