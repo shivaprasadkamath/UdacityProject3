@@ -1,5 +1,5 @@
 URL01 - https://github.com/shivaprasadkamath/UdacityProject3.git
-URL02 - http://udapeople-35802c0.s3-website-us-west-2.amazonaws.com
-URL03 - http://d32kqmmnl1km8c.cloudfront.net
-URL04 - http://ec2-54-189-109-81.us-west-2.compute.amazonaws.com:3030/api/status
-URL05 - http://ec2-35-85-30-51.us-west-2.compute.amazonaws.com:9090/targets
+URL02 - http://udapeople-f00d7cc.s3-website-us-west-2.amazonaws.com
+URL03 - http://dbgl6qkrt78ko.cloudfront.net
+URL04 - http://ec2-35-163-254-125.us-west-2.compute.amazonaws.com:3030/api/status
+URL05 - http://ec2-54-201-176-51.us-west-2.compute.amazonaws.com:9090/targets
