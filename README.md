@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/shivaprasadkamath/UdacityProject3/tree/main.svg?style=svg)](https://circleci.com/gh/shivaprasadkamath/UdacityProject3/tree/main)
+
 ## Give your Application Auto-Deploy Superpowers
 
 In this project, you will prove your mastery of the following learning objectives:
